@@ -69,13 +69,25 @@ class UserView(APIView):
         serializer = UserSerializer(user)
 
         return Response(serializer.data)
+    
+    def put(self, request, *args, **kwargs):
+        username = kwargs.get('username', None)
+
+        if not username:
+            return Response({"error": "method put not allowed"})
+        try:
+            instance = User.objects.get(username=username)
+        except:
+            return Response({"error": "user does not exist"})
+        serializer = UserSerializer(data=request.data, instance=instance)
+        serializer.is_valid()
+        serializer.save()
+        return Response(serializer.data)
+
 
 class LogoutView(APIView):
     def post(self, request):
         response = Response()
         response.delete_cookie('jwt')
-        response.data = {
-            'message': 'successful'
-        }
-
+        response.data = {'message': 'successful'}
         return response
