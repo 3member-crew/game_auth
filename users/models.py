@@ -10,4 +10,7 @@ class User(AbstractUser):
     score = models.IntegerField(default=0)
 
     USERNAME_FIELD = 'username' 
-    REQUIRED_FIELDS = [] 
+    REQUIRED_FIELDS = []
+
+    def __str__(self) -> str:
+        return self.username
