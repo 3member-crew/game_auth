@@ -24,3 +24,10 @@ class UserSerializer(serializers.ModelSerializer):
         instance.score = validated_data.get('score', instance.score)
         instance.save()
         return instance
+
+
+class LeaderBoardSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'score']

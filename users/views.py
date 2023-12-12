@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserSerializer
+from .serializers import UserSerializer, LeaderBoardSerializer
 from .models import User
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import viewsets, mixins, generics
@@ -98,4 +98,4 @@ class UserUpdateAPIView(APIView):
 
 class UserListAPIView(generics.ListAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = LeaderBoardSerializer
