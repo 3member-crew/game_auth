@@ -21,7 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
     
     def update(self, instance, validated_data):
-        instance.score = validated_data.get('score', instance.score)
+        instance.score = validated_data.get('score')
         instance.save()
         return instance
 
