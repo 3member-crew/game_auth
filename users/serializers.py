@@ -25,9 +25,3 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-
-class LeaderBoardSerializer(serializers.ModelSerializer):
-        
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'score']

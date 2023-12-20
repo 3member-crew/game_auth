@@ -64,8 +64,8 @@ class LogoutView(APIView):
 class UserAPIView(APIView):
     def get(self, request):
         authorization_header = request.META.get('HTTP_AUTHORIZATION')
-        token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJ0ZXN0IiwiZXhwIjoxNzAzMDQ1NjM3LCJpYXQiOjE3MDMwNDIwMzd9.gpVO3Ky7KLLEB67ZyX93O1zfTI8Oa-AHXyte8aWsDjw'
-        #auth_type, token = authorization_header.split(' ')
+        auth_type, token = authorization_header.split(' ')
+        
         if not token:
             raise AuthenticationFailed("Unauthenticated!")
         
@@ -84,8 +84,7 @@ class UserAPIView(APIView):
 class UserUpdateAPIView(APIView):   
     def put(self, request, *args, **kwargs):
         authorization_header = request.META.get('HTTP_AUTHORIZATION')
-        #auth_type, token = authorization_header.split(' ')
-        token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwidXNlcm5hbWUiOiJ0ZXN0IiwiZXhwIjoxNzAzMDQ1NjM3LCJpYXQiOjE3MDMwNDIwMzd9.gpVO3Ky7KLLEB67ZyX93O1zfTI8Oa-AHXyte8aWsDjw'
+        auth_type, token = authorization_header.split(' ')   
         if not token:
             raise AuthenticationFailed("Unauthenticated!")
         
