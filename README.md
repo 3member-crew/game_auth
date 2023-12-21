@@ -1,8 +1,7 @@
 # beaver_game_auth
 # API:
-# POST api/login/
-# GET api/user/<username> - to get user
-# PUT api/user/<username>/update (put username, email, score)
-# POST api/register/
-# POST api/logout/
+# POST api/login/ {username, password}
+# GET api/user/ - to get user
+# PUT api/user//update  {score}
+# POST api/register/ {username, email, password}
 # GET api/users/ to get list of users 
