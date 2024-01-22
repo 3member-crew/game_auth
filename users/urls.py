@@ -1,13 +1,12 @@
 from django.urls import path, include
 from .views import *
-from rest_framework.routers import DefaultRouter
-
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path('register/', registerAPIView.as_view()),
-    path('login/', LoginAPIView.as_view()),
-    path('user/',UserAPIView.as_view()),
-    path('logout/', LogoutView.as_view()),
-    path('user/update/', UserUpdateAPIView.as_view()),
+    path('register/', register, name='register'),
+    path('login/', obtain_auth_token, name='login'),
+    path('logout/', logout, name='logout'),
+    path('profile/', profile, name='profile'),
+    path('user/update/', update),
     path('users/', UserListAPIView.as_view())
 ]
