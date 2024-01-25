@@ -1,13 +1,11 @@
-import jwt
-import datetime
-
-
-def create_token(id, username):
-    payload = {
-            "id": id,
-            "username": username,
-            "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
-            "iat": datetime.datetime.utcnow()
-        }
-    token = jwt.encode(payload, 'secret', algorithm='HS256')
+from rest_framework.authtoken.models import Token
+def create_token(user):
+    token = Token.objects.create(user=user)
     return token
+
+
+def get_token(user):
+    token, created = Token.objects.get_or_create(user=user)
+    if (token):
+        return token
+    return created
